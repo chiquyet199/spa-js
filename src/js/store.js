@@ -1,6 +1,12 @@
 let state = {
   activePage: "home",
-  products: [{ name: "iphone7" }, { name: "iphone8" }]
+  products: [
+    { id: 1, name: "iphone7", prize: 12 },
+    { id: 2, name: "iphone8", prize: 100 },
+    { id: 3, name: "iphoneX", prize: 1200 }
+  ],
+  activeProduct: null,
+  cart: []
 };
 
 const events = {};
