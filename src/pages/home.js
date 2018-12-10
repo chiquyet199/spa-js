@@ -4,9 +4,9 @@ const moduleIdentifier = "spa_home";
 
 const getHtml = props => {
   return `
-    <div class="about">
-      <h1>ABOUT</h1>
-      <button onclick="spa_home.goTo('home')">Back To Home</button>
+    <div class="home">
+      <h1>HOME</h1>
+      <button onclick="spa_home.goTo('about')">Go To About</button>
     </div>
   `;
 };

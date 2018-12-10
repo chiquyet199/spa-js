@@ -1,7 +1,14 @@
 import store from "./store.js";
+import utils from "./utils.js";
+import rendering from "./rendering.js";
+import pages from "../pages/index.js";
 
-const init = () => {
-  store.initialize();
+const run = () => {
+  pages.initialize();
+  const activePage = utils.getActivePage();
+  rendering.render(activePage);
 };
 
-init();
+store.subcribe("stateChanged", run);
+
+run();

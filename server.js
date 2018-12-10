@@ -5,6 +5,8 @@ const app = express();
 
 app.use("/js", express.static(`${__dirname}/src/js`));
 
+app.use("/pages", express.static(`${__dirname}/src/pages`));
+
 app.get("/*", (req, res) => {
   res.sendFile("index.html", { root: `${__dirname}/src` });
 });

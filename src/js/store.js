@@ -1,29 +1,32 @@
-const initialState = {
+let state = {
   activePage: "home",
-  products: [
-    {
-      id: 1,
-      name: "iphone",
-      prize: 12
-    },
-    {
-      id: 2,
-      name: "android",
-      prize: 10
-    }
-  ]
+  products: [{ name: "iphone7" }, { name: "iphone8" }]
 };
 
-const appState = initialState;
+const events = {};
 
-const getState = () => appState;
+const subcribe = (eventName, callback) => {
+  if (!events.hasOwnProperty(eventName)) events[eventName] = [];
 
-const initialize = () => {
-  //load data from localstorage
-  console.log("init store");
+  events[eventName].push(callback);
+};
+
+const publish = (eventName, data) => {
+  if (!events.hasOwnProperty(eventName)) return;
+  events[eventName].map(callback => {
+    callback(data);
+  });
+};
+
+const getState = () => state;
+
+const setState = newState => {
+  state = newState;
+  publish("stateChanged", newState);
 };
 
 export default {
   getState,
-  initialize
+  setState,
+  subcribe
 };
