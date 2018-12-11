@@ -1,4 +1,5 @@
 import store from "../js/store.js";
+import {get, hosts} from "../js/api.js";
 
 const moduleIdentifier = "spa_products";
 
@@ -9,6 +10,7 @@ const renderProductItem = product =>
 
 const getHtml = props => {
   const { products } = props;
+  spa_products.fetchProducts()
   return `
     <div class="product">
       <h1>Products List</h1>
@@ -36,6 +38,10 @@ const funcs = {
       activeProduct: activeProduct
     };
     store.setState(newState);
+  },
+  fetchProducts: async function(){
+    var products = await get(`${hosts.nordic}products`)    
+    console.log(`This is data from api calling service ${products}`)
   }
 };
 
