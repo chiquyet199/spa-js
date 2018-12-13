@@ -1,10 +1,10 @@
 import store from "./store.js";
-import utils from "./utils.js";
+import {getActivePage} from "./utils.js";
 
 const run = () => {
   const rootEl = document.getElementById('root')
   const appState = store.getState()
-  const activePage = utils.getActivePage();
+  const activePage = getActivePage();
   activePage.render(rootEl, appState)
 };
 

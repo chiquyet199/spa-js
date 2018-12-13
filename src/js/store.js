@@ -1,5 +1,5 @@
 let state = {
-  history:[],
+  history: ["home"],
   activePage: "home",
   products: [
     { id: 1, name: "iphone7", prize: 12 },
@@ -29,6 +29,7 @@ const getState = () => state;
 
 const setState = newState => {
   state = newState;
+  console.log(newState);
   publish("stateChanged", newState);
 };
 

@@ -1,10 +1,6 @@
-import store from "../js/store.js";
-
-const moduleIdentifier = "spa_product_detail";
-
-const getHtml = props => {
+const render = (rootEl, props) => {
   const { activeProduct } = props;
-  return `
+  const template = activeProduct ? `
     <div class="product-detail">
       <h1>Products Details</h1>
       <ul>
@@ -14,25 +10,24 @@ const getHtml = props => {
       <button onclick="spa_product_detail.goTo('home')">Back To Home</button>
       <button onclick="spa_product_detail.addToCart()">Add To Cart</button>
     </div>
-  `;
+  ` : '<h1>No such a product</h1>';
+  rootEl.innerHTML = template;
 };
 
-const funcs = {
-  goTo: function(page) {
-    const appState = store.getState();
-    const newState = { ...appState, activePage: page };
-    store.setState(newState);
-  },
-  addToCart: function() {
-    const appState = store.getState();
-    const { activeProduct } = appState;
-    const newState = { ...appState, cart: [...appState.cart, activeProduct] };
-    store.setState(newState);
-  }
-};
+// const funcs = {
+//   goTo: function(page) {
+//     const appState = store.getState();
+//     const newState = { ...appState, activePage: page };
+//     store.setState(newState);
+//   },
+//   addToCart: function() {
+//     const appState = store.getState();
+//     const { activeProduct } = appState;
+//     const newState = { ...appState, cart: [...appState.cart, activeProduct] };
+//     store.setState(newState);
+//   }
+// };
 
 export default {
-  moduleIdentifier,
-  getHtml,
-  funcs
+  render
 };

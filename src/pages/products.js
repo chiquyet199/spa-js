@@ -1,33 +1,30 @@
-import store from "../js/store.js";
-import {get, hosts} from "../js/api.js";
-
-const moduleIdentifier = "spa_products";
+import {$} from '../js/utils.js'
+import {goback} from '../js/navigation.js'
+import { get, hosts } from "../js/api.js";
 
 const renderProductItem = product =>
-  `<li onclick="spa_products.openProductDetail(${product.id})">${
+  `<li data-id="${product.id}">${
     product.name
   }</li>`;
 
-const getHtml = props => {
+const render = (rootEl, props) => {
   const { products } = props;
-  spa_products.fetchProducts()
-  return `
+  funcs.fetchProducts();
+  const template = `
     <div class="product">
       <h1>Products List</h1>
       <ul>
         ${products.map(renderProductItem).join("")}
       </ul>
-      <button onclick="spa_products.goTo('home')">Back To Home</button>
+      <button class="btn-back">Back</button>
     </div>
   `;
+  rootEl.innerHTML = template;
+  const backButton = $('.product .btn-back')
+  backButton.onclick = () => goback()
 };
 
 const funcs = {
-  goTo: function(page) {
-    const appState = store.getState();
-    const newState = { ...appState, activePage: page };
-    store.setState(newState);
-  },
   openProductDetail: function(id) {
     const appState = store.getState();
     const { products } = appState;
@@ -39,14 +36,12 @@ const funcs = {
     };
     store.setState(newState);
   },
-  fetchProducts: async function(){
-    var products = await get(`${hosts.nordic}products`)    
-    console.log(`This is data from api calling service ${products}`)
+  fetchProducts: async function() {
+    var products = await get(`${hosts.nordic}products`);
+    console.log(`This is data from api calling service ${products}`);
   }
 };
 
 export default {
-  moduleIdentifier,
-  getHtml,
-  funcs
+  render
 };

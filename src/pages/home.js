@@ -1,4 +1,5 @@
-import {navigate} from '../js/navigation.js'
+import { $ } from "../js/utils.js";
+import { navigate } from "../js/navigation.js";
 
 const renderCartInfo = cart => {
   const totalPrize = cart.reduce((total, item) => {
@@ -13,21 +14,24 @@ const renderCartInfo = cart => {
   `;
 };
 
-const render = (rootEl,props) => {
+const render = (rootEl, props) => {
   const { cart } = props;
-  const template =  `
+  const template = `
     <div class="home">
       <h1>HOME</h1>
-      <button class="btn btn-nav-about">Go To About</button>
-      <button onclick="spa_home.goTo('products')">Go To Product list</button>
+      <button class="btn btn-nav-about">About page</button>
+      <button class="btn btn-nav-products">Product list</button>
       <h2>Cart Info</h2>
       ${cart.length === 0 ? "no Item selected" : renderCartInfo(cart)}
       </div>
   `;
-  rootEl.innerHTML = template
-  document.querySelector('.home .btn').onclick = ()=>{navigate('about')}
+  rootEl.innerHTML = template;
+  const aboutBtn = $(".home .btn-nav-about")
+  const productsBtn = $(".home .btn-nav-products")
+  aboutBtn.onclick = () => navigate('about')
+  productsBtn.onclick = () => navigate('products')
 };
 
 export default {
-  render,
+  render
 };
