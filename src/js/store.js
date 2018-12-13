@@ -1,4 +1,5 @@
 let state = {
+  history:[],
   activePage: "home",
   products: [
     { id: 1, name: "iphone7", prize: 12 },
