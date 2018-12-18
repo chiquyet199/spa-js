@@ -2,10 +2,64 @@
 <html>
   <head>
     <title>Page Title</title>
+    <style>
+      html,body,ul,li{
+        margin: 0;
+        padding: 0;
+      }
+      html,body{
+        height: 100%;
+        overflow: hidden
+      }
+      body{
+        display: flex;
+        justify-content: center;
+      }
+      #root{
+        flex:1;
+      }
+      nav{
+        background: #36a579;
+        padding: 10px;
+      }
+      nav ul{
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li{
+        display: inline-block;
+        padding: 5px 15px;
+        height: 35px;
+        line-height: 35px;
+        text-transform: uppercase;
+      }
+      nav ul li:hover{
+        cursor: pointer;
+        height: 32px;
+        line-height: 32px;
+        border-bottom: 3px solid salmon
+      }
+      .page{
+        height: 100%;
+      }
+      .home .content{
+        height: 100%;
+        margin-top: -21px;
+        background-size: cover;
+        background-image: url('./assets/wallpaper.jpg');
+      }
+      .product-item{
+        background: seashell;
+        padding: 15px 10px;
+        margin-bottom: 2px;
+      }
+      .product-item:hover{
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
-    <h1>SPA-JS</h1>
-    <main id="root"></main>
+    <div id="root"></div>
     <script type="module" src="./js/navigation.js"></script>
     <script type="module" src="./js/api.js"></script>
     <script type="module" src="./js/store.js"></script>

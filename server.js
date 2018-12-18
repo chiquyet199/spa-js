@@ -4,8 +4,9 @@ const path = require("path");
 const PORT = process.env.PORT || 5000
 const app = express();
 
+app.use("/assets", express.static(`${__dirname}/src/assets`));
+app.use("/components", express.static(`${__dirname}/src/components`));
 app.use("/js", express.static(`${__dirname}/src/js`));
-
 app.use("/pages", express.static(`${__dirname}/src/pages`));
 
 app.get("/*", (req, res) => {

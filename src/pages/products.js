@@ -1,3 +1,4 @@
+import nav from '../components/nav.js'
 import store from '../js/store.js'
 import {$} from '../js/utils.js'
 import {goback, navigate} from '../js/navigation.js'
@@ -12,14 +13,15 @@ const render = (rootEl, props) => {
   const { products } = props;
   funcs.fetchProducts();
   const template = `
-    <div class="product">
-      <h1>Products List</h1>
-      <ul>
-        ${products.map(renderProductItem).join("")}
-      </ul>
-      <button class="btn-back">Back</button>
+    <div class="page product">
+      ${nav.render()}
+      <div class="content">
+        <ul>
+          ${products.map(renderProductItem).join('')}
+        </ul>
+      </div>
     </div>
-  `;
+  `
   rootEl.innerHTML = template;
   const productEl = $('.product')
   productEl.addEventListener('click', function(event){
