@@ -7,8 +7,8 @@ const render = function(){
     const targetClass = event.target.className
     if (targetClass === 'btn-nav-products') {
       navigate('products')
-    } else if (targetClass === 'btn-nav-about') {
-      navigate('about')
+    } else if (targetClass === 'btn-nav-contact') {
+      navigate('contact')
     } else if (targetClass === 'btn-nav-home') {
       navigate('home')
     } else if (targetClass === 'shopping-cart') {
@@ -21,7 +21,7 @@ const render = function(){
       <ul>
         <li class="btn-nav-home">Home</li>
         <li class="btn-nav-products">Products</li>
-        <li class="btn-nav-about">About</li>
+        <li class="btn-nav-contact">contact</li>
       </ul>
       <span class="shopping-cart">Cart(${state.cart.length})</span>
     </nav>

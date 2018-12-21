@@ -4,7 +4,7 @@ const render = function (product) {
   const {name} = product
   return `
     <div class="product" data-id="${product.id}">
-      <img width="200px" height="200px" src="https://cdn.tgdd.vn/Products/Images/42/191482/iphone-xs-max-512gb-gold-400x400.jpg"/>
+      <img width="200px" height="200px" src="${product.image}"/>
       <h3>${name}</h3>
       <button class="add">Add to cart</button>
     </div>
@@ -25,9 +25,17 @@ const bindEvents = () => {
 
 const addToCart = id => {
   const appState = store.getState();
-  const { products } = appState;
+  const { products, cart } = appState;
   const productToAdd = products.find(p => p.id == id)
-  const newState = { ...appState, cart: [...appState.cart, productToAdd] };
+  const productInCart = itemInCart => itemInCart.id === productToAdd.id
+  const sameProductInCart = cart.find(productInCart)
+  let newState = appState
+  if(sameProductInCart){
+    sameProductInCart.quantity ++
+  }else{
+    productToAdd.quantity = 1
+    newState = { ...appState, cart: [...appState.cart, productToAdd] };
+  }
   store.setState(newState);
 }
 

@@ -7,6 +7,9 @@
         margin: 0;
         padding: 0;
       }
+      li{
+        list-style: none;
+      }
       html,body{
         height: 100%;
         overflow: hidden
@@ -14,6 +17,18 @@
       body{
         display: flex;
         justify-content: center;
+      }
+      button{
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        min-width: 150px;
+        font-size: 14px;
+        outline: none;
+      }
+      button:hover{
+        cursor: pointer;
+        border: 1px solid #36a579;
       }
       #root{
         flex:1;
@@ -43,16 +58,24 @@
       .page{
         height: 100%;
       }
-      .about .content,
+      .contact .content{
+        background-image: url('./assets/map.png');
+      }
+      .home .content{
+        background-image: url('./assets/wallpaper.jpg');
+      }
+      .contact .content,
       .home .content{
         height: 100%;
-        margin-top: -21px;
         background-size: cover;
         background-position: center;
-        background-image: url('./assets/wallpaper.jpg');
       }
       .products .content{
         display: flex;
+        flex-wrap: wrap;
+      }
+      .checkout .content{
+        padding: 20px;
       }
       .product{
         border-radius: 3px;
@@ -65,6 +88,11 @@
         background: seashell;
         padding: 15px 10px;
         margin-bottom: 2px;
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .product-item span{
+        flex: 0.2;
       }
       .product-item:hover{
         cursor: pointer;
@@ -75,6 +103,9 @@
         top:0;
         line-height: 65px;
       }
+      .shopping-cart:hover{
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -84,7 +115,7 @@
     <script type="module" src="./js/store.js"></script>
     <script type="module" src="./js/utils.js"></script>
 
-    <script type="module" src="./pages/about.js"></script>
+    <script type="module" src="./pages/contact.js"></script>
     <script type="module" src="./pages/home.js"></script>
     <script type="module" src="./pages/products.js"></script>
     <script type="module" src="./pages/checkout.js"></script>
