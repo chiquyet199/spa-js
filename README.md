@@ -2,7 +2,8 @@
 Simple SPA shopping card build by vanilla javascript
 
 ## key
-Declarative Programming
-Immutable
-Observerble store
-Component base
+
+### Declarative Programming
+### Immutable
+### Observerble store
+### Component base
