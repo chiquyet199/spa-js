@@ -1,0 +1,17 @@
+{
+  "name": "simple-spa",
+  "version": "1.0.0",
+  "description": "Build simple SPA using vanilla js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "spa"
+  ],
+  "author": "nordiccoder",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
